@@ -13,7 +13,7 @@ Time : 2021 fall (first half semester of junior)
 <br>
 
 ## Report
-> more info in separate file
+> more info in the separate files
 - [lab1](#lab1)
 - [lab2](#lab2)
 - [lab3](#lab3)
