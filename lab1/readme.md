@@ -154,69 +154,69 @@ Arduino微處理器不僅包含MCU，還內建記憶體、類比/數位訊號轉
 ### Answer 1 
 ![](img/5board.png)
 
-- **Input mode**
+- **Input mode**<br>
 MCU透過GPIO腳從外面收信號，可以進行**外接感測器(溫度、紅外線感測器)狀態、高低電位**等資訊的獲取。
-- **Output mode**
+- **Output mode**<br>
 MCU透過GPIO腳將信號送出，可用於**控制LED、蜂鳴器及伺服馬達**。
-- **UART/I2C/SPI**
+- **UART/I2C/SPI**<br>
 **I2C**(LCD 16x2)、**SPI**(10~13)、**UART**(Bluetooth)、**IRQ**(中斷要求)(2、3)信號等多種用途。
 
 ---
 
-1. **Digital**
+1. **Digital**<br>
 右半邊D0~D13除了GPIO之外，還有以下其他功能 :
-- **D0**
+- **D0**<br>
 用來接收(RX) TTL serial data。
-- **D1**
+- **D1**<br>
 用來傳輸(TX) TTL serial data。
 > TTL serial data 亦即 電腦的USB 到 arduino上TTL 之序列埠傳輸，應避免使用這兩個腳位。
-- **D2、D3** 
+- **D2、D3**<br>
 此兩個腳位可用來外部中斷，其中斷觸發條件有四種，依序為 :
-    - **LOW**
+    - **LOW**<br>
     當 pin 為 LOW 時觸發中斷。
-    - **CHANGE**
+    - **CHANGE**<br>
     當pin狀態改變時觸發中斷，`HIGH`到`LOW`之間切換。
-    - **FALLING**
+    - **FALLING**<br>
     當pin狀態從`HIGH`到`LOW`時觸發中斷。
-    - **RISING**
+    - **RISING**<br>
     當pin狀態從`LOW`到`HIGH`時觸發中斷。
     > 外部中斷如同CPU和OS的觀念，基於整體程式需求，OS會發出指令使CPU從當前程序中斷，處理別的項目，處理完後，再回到中斷程序繼續執行。
-- **D3、D5、D6、D9、D10、D11**
+- **D3、D5、D6、D9、D10、D11**<br>
 這六的腳位旁邊有標示"~"符號，可做為類比輸出，以8-bit PWM之方法作為類比輸出。
 > PWM為Pulse Width Modulation，亦即藉由調高輸出數位訊號之頻率轉為類比。
-- **D7**
+- **D7**<br>
 arduino可使用藍芽無線技術來操作，而此腳位可憐加藍芽模組作為重製使用。
-- **D13**
+- **D13**<br>
 Arduino上備有一顆LED，當此腳位為`HIGH`時LED亮，`LOW`時LED暗。
 
 ---
 
-2. **SPI**
+2. **SPI**<br>
 一種主從式架構的同步資料協定，用於短距離通訊。下方四個腳位可供使用 :
-- **D10(SS, Slave Selected)**
+- **D10(SS, Slave Selected)**<br>
 `LOW`時enable訊號，代表裝置可以與Master通訊。
-- **D11(MOSI)**
+- **D11(MOSI)**<br>
 master數據輸出、slave數據輸入(主出從入)。
-- **D12(MISO)**
+- **D12(MISO)**<br>
 master數據輸入、slave數據輸出(主入從出)。
-- **D13(SCK, Serial Clock)**
+- **D13(SCK, Serial Clock)**<br>
 時脈信號(CLK)，由master產生並控制。
 
 ---
 
-3. **Analog** (為於左下角)
+3. **Analog** (為於左下角)<br>
 左半邊A0-A5可作為類比輸入使用、但不能類比輸出，類比輸出需透過先前提到的PWM進行。此外此6個腳位也可做為數位輸入、輸出使用，別名為D14-D19。
 
 ---
 
-4. **Power** (位於左上角)
-- **VIN**
+4. **Power** (位於左上角)<br>
+- **VIN**<br>
 可用於外接電源供應器輸入電壓是arduino。
-- **5V**
+- **5V**<br>
 可從arduino提出5V至外部電路使用，其電壓從VIN提取。
-- **3V3**
+- **3V3**<br>
 可從arduino提出3.3V至外部電路使用，其電壓從FTDI chip提取。
-- **GND**
+- **GND**<br>
 接地。
 
 ### Question 2
@@ -233,13 +233,13 @@ master數據輸入、slave數據輸出(主入從出)。
 描述多工七段顯示器及鍵盤掃描的工作原理。
 
 ### Answer 3
-1. **多工七段顯示器工作原理**
+1. **多工七段顯示器工作原理**<br>
 ![](img/7mutli-7-seg.png)
 多工七段顯示器可以解決驅動4個顯示器所需要的pin腳過多的問題。<br>
 將每個顯示器所需要之segements (a~g)的部分利用Arduino輸入後，多工七段顯示器會先將第一個顯示器需要的線路快速開啟(頻閃)後再換至下一個顯示器所需的線路，以此不斷重複。由於開啟之過程過於迅速，人眼會因為視覺暫留只看見所有顯示器都開啟並呈現恆亮的狀態。
 - ref : [7-segment display basics](http://lednique.com/display-technology/7-segment-display-basics/)
 
-2. **鍵盤掃描工作原理**
+2. **鍵盤掃描工作原理**<br>
 ![](img/8keypad.png)
 反覆地將**每一行快速寫入低電位(Low)的脈衝訊號，作為掃描用途**，當按下按鈕時，Arduino會偵測到是哪一行按下按鈕並做出反應。與此同時，**每一列會不斷地反覆掃描(讀入)信號**，一旦偵測到低電位信號則可以確定是哪一列被按下。<br>
 由於寫入與掃描的速度都很快，因此Arduino可以正確的接收到哪一行或哪一列被按下，所以將兩個迴圈一起使用時就可以確定是哪一行哪一列的按鈕被使用者按下。
