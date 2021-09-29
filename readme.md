@@ -32,7 +32,7 @@ Time : 2021 fall (first half semester of junior)
 |規格|描述|
 |:-:|:-:|
 |板子|Arduino R3 with ATmega328P, 16 MHz|
-|模組|多工七段顯示器, 4x4 Keypad, etc.|
+|lab1 模組|Multiplexed(4-digit) seven-segment display, 4x4 Keypad|
 
 <br>
 

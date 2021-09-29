@@ -171,15 +171,15 @@ MCU透過GPIO腳將信號送出，可用於**控制LED、蜂鳴器及伺服馬�
 用來傳輸(TX) TTL serial data。
 > TTL serial data 亦即 電腦的USB 到 arduino上TTL 之序列埠傳輸，應避免使用這兩個腳位。
 - **D2、D3**<br>
-此兩個腳位可用來外部中斷，其中斷觸發條件有四種，依序為 :
+  此兩個腳位可用來外部中斷，其中斷觸發條件有四種，依序為 :
     - **LOW**<br>
-    當 pin 為 LOW 時觸發中斷。
+      當 pin 為 LOW 時觸發中斷。
     - **CHANGE**<br>
-    當pin狀態改變時觸發中斷，`HIGH`到`LOW`之間切換。
+      當pin狀態改變時觸發中斷，`HIGH`到`LOW`之間切換。
     - **FALLING**<br>
-    當pin狀態從`HIGH`到`LOW`時觸發中斷。
+      當pin狀態從`HIGH`到`LOW`時觸發中斷。
     - **RISING**<br>
-    當pin狀態從`LOW`到`HIGH`時觸發中斷。
+      當pin狀態從`LOW`到`HIGH`時觸發中斷。
     > 外部中斷如同CPU和OS的觀念，基於整體程式需求，OS會發出指令使CPU從當前程序中斷，處理別的項目，處理完後，再回到中斷程序繼續執行。
 - **D3、D5、D6、D9、D10、D11**<br>
 這六的腳位旁邊有標示"~"符號，可做為類比輸出，以8-bit PWM之方法作為類比輸出。
@@ -214,7 +214,7 @@ master數據輸入、slave數據輸出(主入從出)。
 可用於外接電源供應器輸入電壓是arduino。
 - **5V**<br>
 可從arduino提出5V至外部電路使用，其電壓從VIN提取。
-- **3V3**<br>
+- **3.3V**<br>
 可從arduino提出3.3V至外部電路使用，其電壓從FTDI chip提取。
 - **GND**<br>
 接地。
