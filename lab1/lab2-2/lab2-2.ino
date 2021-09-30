@@ -1,3 +1,4 @@
+// 一LED燈控制按鈕需考慮de-bouncing問題；另外一顆LED燈則保持以每秒亮按的頻率持續閃爍。
 const int button = 2;
 const int led = 13;      //UNO內建LED
 const int tick_led = 8;  //每秒亮暗的led

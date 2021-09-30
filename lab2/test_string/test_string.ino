@@ -1,4 +1,4 @@
-
+// C-string字串處理練習。
 void setup() {
     char str[] = "This is my string";  // create a string
     char out_str[20];                  // output from string functions placed here

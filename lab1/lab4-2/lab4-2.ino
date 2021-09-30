@@ -1,3 +1,4 @@
+// 以模組Keypad鍵入資料，將值暫存在buffer中，按下#會將之前輸入的字元依序傳輸至serial monitor。
 #include <Keypad.h>  //引用Keypad函式庫
 #define KEY_ROWS 4   //按鍵模組的列數
 #define KEY_COLS 4   //按鍵模組的行數

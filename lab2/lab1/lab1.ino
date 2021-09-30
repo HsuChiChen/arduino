@@ -1,7 +1,6 @@
 /*自訂一個密碼，使用Keypad來輸入值，
 輸入完成後按Ａ送出，
 若輸入值與密碼相同則印出Unlock!，錯誤則印出Wrong passwords!。*/
-
 #include <Key.h>
 #include <Keypad.h>
 
@@ -15,11 +14,12 @@ char key[4][4] = {
     {'7', '8', '9', 'C'},
     {'*', '0', '#', 'D'},
 };
-byte colpin[4] = {7, 8, 9, 10};
-byte rowpin[4] = {3, 4, 5, 6};
-Keypad keypad(makeKeymap(key), rowpin, colpin, 4, 4);
+byte colPin[4] = {13, 9, A4, A5};
+byte rowPin[4] = {A0, A1, A2, A3};
+Keypad keypad(makeKeymap(key), rowPin, colPin, 4, 4);
 void setup() {
     Serial.begin(9600);
+    Serial.println();
     Serial.println("Enter the password :");
 }
 
@@ -28,18 +28,19 @@ void loop() {
     while (true) {  //4-digit number
         enter = keypad.getKey();
         if (enter != NO_KEY) {  //valid value
-            value[count++] = enter;
-            Serial.print(enter);
+            if (enter == 'A') {
+                break;
+            } else {
+                value[count++] = enter;
+                Serial.print(enter);
+            }
         }
-        if (enter == 'A') break;
     }
 
     Serial.println();
     Serial.println();
 
-    //if(strcmp(value, password) == 0){
-    if (value[0] == password[0] && value[1] == password[1] && value[2] == password[2] && value[3] == password[3]) {  //hit the answer
-
+    if (strcmp(value, password) == 0) {
         Serial.println("Unlock!");
     } else {
         Serial.println("Wrong passwords!");

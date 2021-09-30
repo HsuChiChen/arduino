@@ -1,3 +1,4 @@
+// 以模組Keypad鍵入資料，將資料傳輸至serial monitor。
 const byte colPins[4] = {2, 3, 4, 5};             //行腳位(column)
 const byte rowPins[4] = {A0, A1, A2, A3};         //列腳位(row)
 const char keymap[4][4] = {{'1', '2', '3', 'A'},  //Keypad對應符號

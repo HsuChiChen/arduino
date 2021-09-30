@@ -1,3 +1,4 @@
+// 使用keypad輸入一個三位數字，實現終極密碼 answer ∈ [0,999]。
 #include <Key.h>
 #include <Keypad.h>
 
@@ -39,8 +40,7 @@ void loop() {
         count = 0;
         while (true) {  //4-digit number
             enter = keypad.getKey();
-
-            if (enter != NO_KEY) {  //valid value
+            if (enter != NO_KEY) {  //input
                 guess_ch[count++] = enter;
                 if (isDigit(enter)) {
                     Serial.print(enter);

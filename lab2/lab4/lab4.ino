@@ -1,3 +1,4 @@
+//承上題，加上七段顯示器顯示。
 #include <MPU6050.h>
 #include <Wire.h>
 #include <math.h>
@@ -6,7 +7,7 @@
 
 //-------about threshold-----------//
 #define Data_num 50
-#define Threshold 140  // take 50 data to compare
+#define Threshold 100  // take 50 data to compare
 
 MPU6050 accelgyro;
 SHOW_SEG show_seg(2, 13);  //pin2- pin13 signal

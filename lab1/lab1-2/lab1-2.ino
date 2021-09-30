@@ -1,4 +1,4 @@
-// 5個GPIO呈現queue的跑馬燈狀態
+// 5個GPIO呈現queue的跑馬燈狀態。
 #define ROW 30
 #define COLUMN 5
 

@@ -1,10 +1,11 @@
+// 利用 MPU-6050做出計步器功能。(只使用三軸加速度之值來進行運算，代表只有判斷旋轉角度)
 #include <MPU6050.h>
 #include <Wire.h>
 #include <math.h>
 
 //-------about threshold-----------//
 #define Data_num 50
-#define Threshold 140  // take 50 data to compare
+#define Threshold 110  // take 50 data to compare
 
 MPU6050 accelgyro;
 //-------about three direction-----------//
@@ -24,6 +25,7 @@ void setup() {
     Wire.begin();
     Serial.begin(9600);
     accelgyro.initialize();
+    Serial.println("Start:");
 }
 
 void loop() {
@@ -63,7 +65,8 @@ void loop() {
     delta_y = max_y - min_y;
     delta_z = max_z - min_z;
 
-    if (delta_x > Threshold || delta_y > Threshold || delta_z > Threshold) {
+    // if (delta_x > Threshold || delta_y > Threshold || delta_z > Threshold) {
+    if (delta_x*delta_x + delta_y*delta_y + delta_z*delta_z > Threshold*Threshold) {
         step_count++;
         Serial.println(step_count);
         max_x = 0;
@@ -75,6 +78,6 @@ void loop() {
         max_z = 0;
         min_z = 0;
         delta_z = 0;
-        delay(500);
+        delay(300);
     }
 }

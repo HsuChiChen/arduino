@@ -1,3 +1,4 @@
+// 掃描式鍵盤與七段顯示器之結合，實作碼錶。
 #include <Keypad.h>
 #define KEY_ROWS 4
 #define KEY_COLS 4
