@@ -21,17 +21,19 @@ float max_z = 0, min_z = 0;
 float delta_x, delta_y, delta_z;  // max - min
 
 int step_count = 0;  //count number of step
+double result = 0;
 
 void setup() {
     Wire.begin();
     Serial.begin(115200);
     accelgyro.initialize();
+    Serial.println("Start:");
 }
 
 void loop() {
     //compare the max and min in 50 data
     for (int i = 0; i < Data_num; i++) {
-        show_seg.show(step_count);
+        show_seg.show(round(result)); //round無條件進位法
         accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
         //normalize accelarate of 250 rad/s
@@ -68,7 +70,8 @@ void loop() {
 
     if (delta_x > Threshold || delta_y > Threshold || delta_z > Threshold) {
         step_count++;
-        Serial.println(step_count);
+        result += pow(step_count, 3); //1^3、2^3、3^3...
+        Serial.println(round(result));
 		max_x = 0;
         min_x = 0;
         delta_x = 0;
