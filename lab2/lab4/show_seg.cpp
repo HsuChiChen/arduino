@@ -30,7 +30,8 @@ void SHOW_SEG::show_digit() {
 
     for (int i = 0; i <= 3; i++) {      //個、十、百、千位數
         digitalWrite(SEG_COM[i], LOW);  //觸發第i位數顯示數字 //選擇要讓哪個七段顯示器亮
-        SEG_Drive(this->display[i]);      //資料線寫入數值
+        SEG_Drive(this->display[i]);    //資料線寫入數值
+        delay(5);
         digitalWrite(SEG_COM[i], HIGH);  //結束觸發第i位數
     }
 }

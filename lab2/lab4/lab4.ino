@@ -1,6 +1,7 @@
 #include <MPU6050.h>
 #include <Wire.h>
 #include <math.h>
+
 #include "show_seg.h"
 
 //-------about threshold-----------//
@@ -8,7 +9,7 @@
 #define Threshold 140  // take 50 data to compare
 
 MPU6050 accelgyro;
-SHOW_SEG show_seg(2, 13); //pin2- pin13 signal
+SHOW_SEG show_seg(2, 13);  //pin2- pin13 signal
 //-------about three direction-----------//
 int16_t ax, ay, az, gx, gy, gz;  // axis and gravity
 int n_ax, n_ay, n_az;            // normalize axis accerlaration
@@ -25,7 +26,7 @@ double result = 0;
 
 void setup() {
     Wire.begin();
-    Serial.begin(115200);
+    Serial.begin(9600);
     accelgyro.initialize();
     Serial.println("Start:");
 }
@@ -33,7 +34,7 @@ void setup() {
 void loop() {
     //compare the max and min in 50 data
     for (int i = 0; i < Data_num; i++) {
-        show_seg.show(round(result)); //round無條件進位法
+        show_seg.show(round(result));  //round無條件進位法
         accelgyro.getMotion6(&ax, &ay, &az, &gx, &gy, &gz);
 
         //normalize accelarate of 250 rad/s
@@ -70,9 +71,10 @@ void loop() {
 
     if (delta_x > Threshold || delta_y > Threshold || delta_z > Threshold) {
         step_count++;
-        result += pow(step_count, 3); //1^3、2^3、3^3...
+        result += pow(step_count, 3);  //1^3、2^3、3^3...
         Serial.println(round(result));
-		max_x = 0;
+        delay(20);
+        max_x = 0;
         min_x = 0;
         delta_x = 0;
         max_y = 0;
