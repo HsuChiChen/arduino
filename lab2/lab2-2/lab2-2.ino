@@ -19,6 +19,7 @@ Keypad keypad(makeKeymap(key), rowpin, colpin, 4, 4);
 
 void setup() {
     Serial.begin(9600);
+    Serial.println();
     randomSeed(analogRead(0));  //time seed
 }
 

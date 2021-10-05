@@ -46,7 +46,8 @@ int disp[3];                 //顯示數字
 void setup() {
     // put your setup code here, to run once: Serial.begin(9600);
     Serial.begin(9600);
-    Serial.println("請輸入密碼:");
+    Serial.println();
+    Serial.println("Enter password:");
     randomSeed(analogRead(0));
 }
 void loop() {  // put your main code here, to run repeatedly:

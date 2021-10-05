@@ -4,7 +4,7 @@ void setup() {
     char out_str[20];                  // output from string functions placed here
     int num;                           // general purpose integer
     Serial.begin(9600);
-
+    Serial.println();
     // (1) print the string
     Serial.println(str);
 

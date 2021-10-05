@@ -29,6 +29,7 @@ void setup() {
     Wire.begin();
     Serial.begin(9600);
     accelgyro.initialize();
+    Serial.println();
     Serial.println("Start:");
 }
 
