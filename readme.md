@@ -7,8 +7,13 @@ Time : 2021 fall (first half semester of junior)
 |:-:|:-:|
 |[單晶片系統](http://class-qry.acad.ncku.edu.tw/syllabus/online_display.php?syear=0110&sem=1&co_no=E230900&class_code=)|[戴政祺](https://www.ee.ncku.edu.tw/teacher/index2.php?teacher_id=125)|
 
-- [110學年課程介紹](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/Hy_OTeRWK)
-- [跑馬燈＋按鍵+多工七段顯示器＋鍵盤](https://hackmd.io/@Alanzzzz/SJDW5IumK)
+|周次|日期|課程|
+|:-:|:-:|:-:|
+|W1|09/16|[110學年課程介紹](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/Hy_OTeRWK)|
+|W2|09/23|[跑馬燈、按鍵、多工七段顯示器、鍵盤](https://hackmd.io/@Alanzzzz/SJDW5IumK)|
+|W4|09/30|[密碼鎖、計步器](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/rJSzxDQ-K#Arduino%E8%AC%9B%E7%BE%A9%EF%BC%9A%E8%A8%88%E6%AD%A5%E5%99%A8)|
+|W5|10/07|[SPI、藍芽模組](https://hackmd.io/ms-bSkqzR-CvgJwOowGNmQ?view)|
+
 
 <br>
 
@@ -61,6 +66,12 @@ git clone https://github.com/HsuChiChen/arduino.git
 |`*`|重新開始|
 |`#`|離開並進入選擇模式|
 > lab4-2、lab4-3需引入`Keypad.h`的header file。
+
+<br>
+
+## lab2
+
+<br>
 
 ## Contributions
 |職稱|學號|姓名|email|

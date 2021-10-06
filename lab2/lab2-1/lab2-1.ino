@@ -12,7 +12,7 @@ bool True_OR_false();
 void Generate_verification();
 
 Password password = Password("1234");
-SHOW_SEG show_seg(2, 13);  //pin2- pin13 signal
+SHOW_SEG show_seg(2, 13);  //set pin2- pin13 as signal
 String newPassword;
 
 bool check = 0;

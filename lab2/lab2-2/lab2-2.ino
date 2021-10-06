@@ -13,9 +13,9 @@ char key[4][4] = {
     {'7', '8', '9', 'C'},
     {'*', '0', '#', 'D'},
 };
-byte colpin[4] = {7, 8, 9, 10};
-byte rowpin[4] = {3, 4, 5, 6};
-Keypad keypad(makeKeymap(key), rowpin, colpin, 4, 4);
+byte col_pin[4] = {13, 9, A4, A5};
+byte row_pin[4] = {A0, A1, A2, A3};
+Keypad keypad(makeKeymap(key), row_pin, col_pin, 4, 4);
 
 void setup() {
     Serial.begin(9600);
