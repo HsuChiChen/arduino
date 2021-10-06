@@ -75,7 +75,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 - 可修改密碼、添加驗證碼等功能的**密碼鎖**。
 - **終極密碼**小遊戲。
 - 利用`MPU-6050`做出**計步器**功能並顯示在七段顯示器上。
-> > lab2-1需引入`Password.h`的header file，而lab2-1v2為不使用`Password.h`，用傳統C-string風格字串進行比對的版本。
+> lab2-1需引入`Password.h`的header file，而lab2-1v2為不使用`Password.h`，用傳統C-string風格字串進行比對的版本。
 
 <br>
 
