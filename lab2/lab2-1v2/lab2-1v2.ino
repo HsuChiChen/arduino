@@ -7,7 +7,10 @@
 
 #include "show_seg.h"
 
+//declare function
 void input(char terminal_char, char value[]);
+void input_3(char terminal_char, char arr[]);
+
 char password[] = "0000";
 char value[5] = {0};
 int count = 0;

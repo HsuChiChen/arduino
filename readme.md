@@ -34,10 +34,11 @@ Time : 2021 fall (first half semester of junior)
 3. Text Editor
 - `VScode 1.60.2` with plug-in  [`Arduino`](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino)
 
-|規格|描述|
+|項目|規格|
 |:-:|:-:|
 |板子|Arduino R3 with ATmega328P, 16 MHz|
-|lab1 模組|Multiplexed(4-digit) seven-segment display, 4x4 Keypad|
+|lab1 新增模組|Multiplexed(4-digit) seven-segment display(顯示器), 4x4 Keypad(輸入媒介)|
+|lab2 新增模組|`MPU6050`(6軸傳感器)|
 
 <br>
 
@@ -52,10 +53,10 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 ## lab1
 ![](img/lab1.gif)
-- GPIO呈現控制LED燈，呈現跑馬燈、向左或向右等狀態。
+- GPIO呈現控制LED燈，呈現**跑馬燈**、向左或向右等狀態。
 - 解決按鈕的de-bouncing問題。
-- 控制多工七段顯示器，顯示特定數字、計數器。
-- 掃描式鍵盤與七段顯示器之結合，實作碼錶，功能如下:
+- 控制多工七段顯示器，顯示特定數字、**計數器**。
+- 掃描式鍵盤與七段顯示器之結合，實作**碼錶**，功能如下:
 
 |按鍵|觸發功能|
 |:-:|:-:|
@@ -70,6 +71,11 @@ git clone https://github.com/HsuChiChen/arduino.git
 <br>
 
 ## lab2
+![](img/lab2.gif)
+- 可修改密碼、添加驗證碼等功能的**密碼鎖**。
+- **終極密碼**小遊戲。
+- 利用`MPU-6050`做出**計步器**功能並顯示在七段顯示器上。
+> > lab2-1需引入`Password.h`的header file，而lab2-1v2為不使用`Password.h`，用傳統C-string風格字串進行比對的版本。
 
 <br>
 
