@@ -268,7 +268,15 @@ void loop(){
 ```
 - **從MPU-6050讀出數據**<br>
 讀出和寫入一樣，要先打開`Wire`的傳輸模式，然後寫一個字節的寄存器起始地址。接下來將指定地址的數據讀到`Wire.h`的緩存中，並關閉傳輸模式，最後從緩存中讀取數據。<br><br>
-示例是從`MPU6050`的`0x3B`寄存器開始讀取`14`個byte的數據。依序兩兩一組，先讀到的A向後位移`8`bit，後讀到的B與A做`LOGIC OR`，使兩個字節組成一個16位整數。
+示例是從`MPU6050`的`0x3B`寄存器開始讀取`14`個byte的數據。由於[`Wire.read()`回傳值](https://www.arduino.cc/en/Reference/WireRead)為**下一個接收到byte**，總共`14`個`Wire.read()`，因此master才會要跟slave要`14`個byte。依序兩兩一組，先讀到的A向左位移`8`bit，後讀到的B與A做`Bitwise OR`因此等同於2個8個bit整數concatenate成一個16個bit整數。<br><br>舉例來說
+$$
+\begin{array}{clcr}
+\text{字串A} & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1\\
+\text{字串A left shift 8 bits} & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 0 & 0 & 0 & 0 & 0 & 0 & 0 & 0\\
+\text{字串B} & & & & &  &  &  &  & 1 & 0 & 1 & 0 & 0 & 1 & 0 & 1\\
+\text{與左移之字串A做Bitwise OR} & 1 & 0 & 0 & 1 & 1 & 1 & 1 & 1 & 1 & 0 & 1 & 0 & 0 & 1 & 0 & 1\\
+\end{array}
+$$
 
 ```cpp
   Serial.print("AcX = "); Serial.print(AcX); //傳輸並顯示在serial monitor

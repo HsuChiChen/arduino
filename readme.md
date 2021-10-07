@@ -12,7 +12,7 @@ Time : 2021 fall (first half semester of junior)
 |W1|09/16|[110學年課程介紹](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/Hy_OTeRWK)|
 |W2|09/23|[跑馬燈、按鍵、多工七段顯示器、鍵盤](https://hackmd.io/@Alanzzzz/SJDW5IumK)|
 |W4|09/30|[密碼鎖、計步器](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/rJSzxDQ-K#Arduino%E8%AC%9B%E7%BE%A9%EF%BC%9A%E8%A8%88%E6%AD%A5%E5%99%A8)|
-|W5|10/07|[SPI、藍芽模組](https://hackmd.io/ms-bSkqzR-CvgJwOowGNmQ?view)|
+|W5|10/07|[SPI、藍芽模組](https://hackmd.io/@9ScCWm6PQhCqJjg8JfJKzQ/SJ2Ig1nVt)|
 
 
 <br>
@@ -39,6 +39,7 @@ Time : 2021 fall (first half semester of junior)
 |板子|Arduino R3 with ATmega328P, 16 MHz|
 |lab1 新增模組|Multiplexed(4-digit) seven-segment display(顯示器), 4x4 Keypad(輸入媒介)|
 |lab2 新增模組|`MPU6050`(6軸傳感器)|
+|lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), HC-05(藍芽模組)|
 
 <br>
 
@@ -78,6 +79,8 @@ git clone https://github.com/HsuChiChen/arduino.git
 > lab2-1需引入`Password.h`的header file，而lab2-1v2為不使用`Password.h`，用傳統C-string風格字串進行比對的版本。
 
 <br>
+
+## lab3
 
 ## Contributions
 |職稱|學號|姓名|email|
