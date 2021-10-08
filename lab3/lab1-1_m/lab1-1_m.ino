@@ -9,14 +9,14 @@ void setup() {
 
 void loop() {
     char c;
-    digitalWrite(SS, LOW); //enable SPI
-    
-    for(const char* p = "Hello, world!\r"; c = *p; p++){
+    digitalWrite(SS, LOW);  //enable SPI
+
+    for (const char* p = "Hello, world!\r"; c = *p; p++) {
         SPI.transfer(c);
         Serial.println(c);
         //delay(500);
     }
-    
-    digitalWrite(SS, HIGH); //disable SPI
+
+    digitalWrite(SS, HIGH);  //disable SPI
     delay(5000);
 }

@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);  // 宣告10腳位為Arduino的RX 、11為Arduino的 TX
-char val = '1';                         //儲存接受到的資料變數
+char val = '1';                   //儲存接受到的資料變數
 
 void number_transfer(int num);
 void SEG_Drive(int num);
@@ -34,8 +34,6 @@ void setup() {
         pinMode(i, OUTPUT);
         digitalWrite(i, HIGH);  //共陽極
     }
-
-
 }
 void loop() {
     // 若收到「序列埠監控視窗」的資料，則送到藍牙模組
@@ -84,7 +82,7 @@ void loop() {
             }
 
             if (BTSerial.available()) {
-              val = BTSerial.read();
+                val = BTSerial.read();
                 if (val == '1') {
                     val = '2';
                     break;

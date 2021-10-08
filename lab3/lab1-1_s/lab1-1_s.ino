@@ -17,9 +17,9 @@ void setup() {
 
 ISR(SPI_STC_vect) {
     byte c = SPDR;
-    if(pos < sizeof(buf)){
+    if (pos < sizeof(buf)) {
         buf[pos++] = c;
-        if(c == '\r') flag = true;
+        if (c == '\r') flag = true;
     }
 }
 
