@@ -1,6 +1,6 @@
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);
-#define LED 8
+#define LED 12
 
 char val;
 bool LED_state = LOW;
@@ -15,8 +15,13 @@ void loop() {
     //Serial -> bluetooth
     if (Serial.available()) {
         val = Serial.read();
-        Serial.println(int(val));  //test for 換行
-        BTSerial.println(val);
+        // Serial.println(int(val));  //test for 換行
+        BTSerial.write(val);
+    }
+    // bluetooth pass
+    if (BTSerial.available()) {
+        val = BTSerial.read();
+        //Serial.print(val);
 
         if (val == '1') {
             Serial.println("HIGH");
@@ -37,11 +42,6 @@ void loop() {
                 delay(80);
             }
         }
-    }
-    // bluetooth pass
-    if (BTSerial.available()) {
-        val = BTSerial.read();
-        //Serial.print(val);
     }
 
     delay(100);
