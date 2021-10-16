@@ -2,7 +2,7 @@
 ###### tags: `arduino`
 ###### 實驗日期 : 2021/09/30
 ## 上課教材
-- [密碼鎖、計步器](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/rJSzxDQ-K#Arduino%E8%AC%9B%E7%BE%A9%EF%BC%9A%E8%A8%88%E6%AD%A5%E5%99%A8)
+- [UART、密碼鎖、計步器](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/rJSzxDQ-K#Arduino%E8%AC%9B%E7%BE%A9%EF%BC%9A%E8%A8%88%E6%AD%A5%E5%99%A8)
 
 ## lab1
 ### SPEC
@@ -180,14 +180,14 @@ Arduino藉由`UART`作為資料傳輸介面，其線路僅有傳輸(TX)、接收
 - `UART`和`RS-232C`之間要如何轉換?<br>
 透過一顆`RS-232C`的傳送/接收器叫做`MAX232`，內部設計2個非常巧妙的電路 - **charge pump升壓**和**反向電路**，儘管只有這顆IC只有`5V`供電，還能輸入`RS-232`的正負電壓與高於`5V`之電壓。以下2個電路在`MAX232`內部是由4個電容器和一系列的開關切換電路自動完成 :
     1. **Charge pump**
-    
+  
     |原始|後來|
     |:-:|:-:|
     |兩個電容器`C1`和`C2`，分別用`5V`電源將它們充飽|讓`C1`和`C2`脫離電源，並串聯起來|
     |![](img/2charge_pump.png)|![](img/3charge_pump.png)|
-    
+  
     2. **反向電路**
-    
+  
     |原始|後來|
     |:-:|:-:|
     |一個電容器充電|將它的極性對調，讓原來電位比較高的那支腳與系統的`0 V`電位相連，由於電容器裡面的電位差不會改變，所以原來低電位那隻腳，現在相對於`0V`來說就是負電壓|
@@ -237,34 +237,39 @@ const int MPU_addr=0x68;
 
 //在程式執行開始時會執行一次，用於初始化設定
 void setup(){
-  Wire.begin(); 
-  //初始化Wire.h並作為master or slave加入I2C bus
-  //如未指定7-bit slave地址(函數重載)，則為加入者為master
-  Wire.beginTransmission(MPU_addr); //開啟MPU6050的傳輸
-  Wire.write(0x6B); //指定寄存器地址
-  Wire.write(0); //寫入一個字節的數據
-  Wire.endTransmission(true); //結束傳輸，true表示釋放總線
+    Wire.begin(); 
+    //初始化Wire.h並作為master or slave加入I2C bus
+    //如未指定7-bit slave地址(函數重載)，則為加入者為master
+    Wire.beginTransmission(MPU_addr); //開啟MPU6050的傳輸
+    Wire.write(0x6B); //指定寄存器地址
+    Wire.write(0); //寫入一個字節的數據
+    Wire.endTransmission(true); //結束傳輸，true表示釋放總線
 ```
 - **將數據寫入MPU-6050**<br>
-在每次向器件寫入數據前要先打開`Wire`的傳輸模式，並指定器件的總線地址，`MPU6050`的總線地址是`0x68`(`AD0`引腳為高電平時地址為`0x69`)。然後**寫入一個字節的寄存器起始地址，再寫入任意長度的數據**。<br><br>
+在每次向器件寫入數據前要先打開`Wire`的傳輸模式，並指定器件的總線地址，`MPU6050`的總線地址是`0x68`(`AD0`引腳為高電平時地址為`0x69`)，地址可於IC的datasheet中查閱或[自己寫i2c_scanner檢測](https://www.makerguides.com/character-i2c-lcd-arduino-tutorial/)。然後**寫入一個字節的寄存器起始地址，再寫入任意長度的數據**。<br><br>
 這些數據將被連續地寫入到指定的起始地址中，超過當前寄存器長度的將寫入到後面地址的寄存器中。寫入完成後關閉`Wire`的傳輸模式。示例是向`MPU6050`的`0x6B`寄存器寫入一個byte`0`。
 ```cpp
-  Serial.begin(38400); //設定傳輸時的baud(每秒有幾個bit)
+    Serial.begin(38400); //設定傳輸時的baud(每秒有幾個bit)
 }
 
 //重複執行在loop()函式中的程式碼，直到Arduino硬體關閉
 void loop(){
-  Wire.beginTransmission(MPU_addr); //開啟MPU6050的傳輸
-  Wire.write(0x3B); //指定寄存器地址
-  Wire.endTransmission(false); //開啟傳輸模式
-  Wire.requestFrom(MPU_addr,14,true); //從MPU要求14byte資料
-  AcX=Wire.read()<<8|Wire.read(); //兩個字節組成一個16位整數 
-  AcY=Wire.read()<<8|Wire.read();  
-  AcZ=Wire.read()<<8|Wire.read();
-  //Tmp=Wire.read()<<8|Wire.read(); //題目少一行，與溫度有關之數值
-  GyX=Wire.read()<<8|Wire.read();  
-  GyY=Wire.read()<<8|Wire.read(); 
-  GyZ=Wire.read()<<8|Wire.read(); 
+    Wire.beginTransmission(MPU_addr); //開啟MPU6050的傳輸
+    Wire.write(0x3B); //指定寄存器地址
+    Wire.endTransmission(false); //開啟傳輸模式
+    //If false, endTransmission() sends a 
+    //restart message after transmission.
+    //The bus will not be released, 
+    //which prevents another master device 
+    //from transmitting between messages.
+    Wire.requestFrom(MPU_addr,14,true); //從MPU要求14byte資料
+    AcX=Wire.read()<<8|Wire.read(); //兩個字節組成一個16位整數 
+    AcY=Wire.read()<<8|Wire.read();  
+    AcZ=Wire.read()<<8|Wire.read();
+    //Tmp=Wire.read()<<8|Wire.read(); //題目少一行，與溫度有關之數值
+    GyX=Wire.read()<<8|Wire.read();  
+    GyY=Wire.read()<<8|Wire.read(); 
+    GyZ=Wire.read()<<8|Wire.read(); 
 ```
 - **從MPU-6050讀出數據**<br>
 讀出和寫入一樣，要先打開`Wire`的傳輸模式，然後寫一個字節的寄存器起始地址。接下來將指定地址的數據讀到`Wire.h`的緩存中，並關閉傳輸模式，最後從緩存中讀取數據。<br><br>
@@ -279,13 +284,13 @@ $$
 $$
 
 ```cpp
-  Serial.print("AcX = "); Serial.print(AcX); //傳輸並顯示在serial monitor
-  Serial.print(" | AcY = "); Serial.print(AcY);
-  Serial.print(" | AcZ = "); Serial.print(AcZ);  
-  Serial.print(" | GyX = "); Serial.print(GyX);
-  Serial.print(" | GyY = "); Serial.print(GyY);
-  Serial.print(" | GyZ = "); Serial.println(GyZ);
-  delay(333); //延遲333ms
+    Serial.print("AcX = "); Serial.print(AcX); //傳輸並顯示在serial monitor
+    Serial.print(" | AcY = "); Serial.print(AcY);
+    Serial.print(" | AcZ = "); Serial.print(AcZ);  
+    Serial.print(" | GyX = "); Serial.print(GyX);
+    Serial.print(" | GyY = "); Serial.print(GyY);
+    Serial.print(" | GyZ = "); Serial.println(GyZ);
+    delay(333); //延遲333ms
 }
 ```
 - **印出數據**<br>
@@ -296,7 +301,7 @@ $$
 2. [MPU6050的數據獲取、分析與處理](https://www.itread01.com/content/1507437608.html#:~:text=MPU6050%E6%98%AF%E4%B8%80%E7%A8%AE%E9%9D%9E%E5%B8%B8%E6%B5%81%E8%A1%8C,%E9%A1%9E%E9%A3%9B%E8%A1%8C%E5%99%A8%E4%B8%8A%E9%A6%B3%E9%A8%81%E8%97%8D%E5%A4%A9%E3%80%82)
 3. [EduCake 的 I2C 通訊](https://www.86duino.com/wp-includes/file/Chapter06-TC.pdf)
 4. [認識UART界面](https://makerpro.cc/2019/12/uart-part-1/)
-
+5. [How I2C Communication Works and How To Use It with Arduino](https://www.youtube.com/watch?v=6IAkYpmA1DQ)
 
 ## 心得
 ### 劉永勝
@@ -320,5 +325,4 @@ lab1、lab2-1、lab2-2我傾向於**不使用**`string`與`password`這兩個cla
 |問題|Arduino第一次`Serial.prtint`常常出現亂碼、錯誤縮排。|
 |推測原因(有待商榷)|用[stdin的觀念](https://www.howtogeek.com/435903/what-are-stdin-stdout-and-stderr-on-linux/)思考，緩衝區一開始未清空字符，印出不預期之空格。
 |解決方法|在設定鮑率`Serial.begin()`前面加上`Serial.println();`<br>先自行flush掉緩衝區內的字元。|
-
 

@@ -27,8 +27,8 @@ ISR(SPI_STC_vect) {        //SPI中斷程序
 }
 
 void loop() {
-    if (received)  //Logic to SET LED ON OR OFF depending upon the value recerived from master
-    {
+    //Logic to SET LED ON OR OFF depending upon the value recerived from master
+    if (received) {
         if (Slavereceived == 1) {
             digitalWrite(LED, HIGH);  //Sets pin 7 as HIGH LED ON
             Serial.println("Slave LED ON");
@@ -39,8 +39,8 @@ void loop() {
 
         buttonvalue = digitalRead(buttonpin);  // Reads the status of the pin 2
 
-        if (buttonvalue == HIGH)  //Logic to set the value of x to send to master
-        {
+        //Logic to set the value of x to send to master
+        if (buttonvalue == HIGH) {
             x = 1;
 
         } else {

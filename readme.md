@@ -23,6 +23,7 @@ Time : 2021 fall (first half semester of junior)
 - [lab2](#lab2)
 - [lab3](#lab3)
 - [lab4](#lab4)
+- [lab5](#lab5)
 
 <br>
 
@@ -40,6 +41,7 @@ Time : 2021 fall (first half semester of junior)
 |lab1 新增模組|Multiplexed(4-digit) seven-segment display(顯示器), 4x4 Keypad(輸入媒介)|
 |lab2 新增模組|`MPU6050`(6軸傳感器)|
 |lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), HC-05(藍芽模組)|
+|lab4 新增模組|16×2 I2C LCD(顯示器)|
 
 <br>
 
@@ -81,6 +83,19 @@ git clone https://github.com/HsuChiChen/arduino.git
 <br>
 
 ## lab3
+![](img/lab3.gif)
+- 利用SPI進行2個Arduino板子之間通訊 - 傳字串、操控彼此LED。
+- Serial Monitor上輸入再透過藍芽傳資料，控制五顆LED跑馬燈。
+- 手機終端機輸入再透過藍芽傳資料，實現碼錶、密碼鎖功能。
+
+<br>
+
+## lab4
+![](img/lab4.gif)
+- 利用I2C進行Arduino間通訊 - 傳字串。
+- 利用keypad與LCD實現四則運算計算機。
+> lab2、lab3、lab4需引入`LiquidCrystal_I2C.h`的header file。
+<br>
 
 ## Contributions
 |職稱|學號|姓名|email|

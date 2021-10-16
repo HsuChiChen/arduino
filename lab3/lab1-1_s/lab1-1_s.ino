@@ -7,19 +7,20 @@ volatile bool flag;
 void setup() {
     Serial.begin(9600);
     Serial.println();
-    SPCR |= bit(SPE);       //開啟從機的SPI通訊(SPCR |= (1<<SPE))
+    SPCR |= bit(SPE);       // turn on SPI in slave mode
     pinMode(MISO, OUTPUT);  //設定主入從出
 
-    pos = 0;  //buffer裡頭為空
+    pos = 0;  // buffer empty
     flag = false;
-    SPI.attachInterrupt();  //啟用中斷函式
+    SPI.attachInterrupt();  // turn on interrupt
 }
 
+// SPI interrupt routine
 ISR(SPI_STC_vect) {
-    byte c = SPDR;
+    byte c = SPDR;  // read byte from SPI Data Register
     if (pos < sizeof(buf)) {
-        buf[pos++] = c;
-        if (c == '\r') flag = true;
+        buf[pos++] = c;              // save data in the next index in the array buff
+        if (c == '\r') flag = true;  //check for the end of the word
     }
 }
 
