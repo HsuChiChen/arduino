@@ -1,5 +1,6 @@
+// 自己的學號字串以LCD跑馬燈顯示。
 #include <LiquidCrystal_I2C.h>  //LCD_12
-#include <Wire.h>
+// #include <Wire.h>
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);  //LCD
 int row = 0;

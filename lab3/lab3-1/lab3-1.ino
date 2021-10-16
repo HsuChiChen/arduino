@@ -1,3 +1,4 @@
+// 手機終端機輸入再透過藍芽傳資料，顯示於四位七段顯示器，實現碼錶功能。
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);  // 宣告10腳位為Arduino的RX 、11為Arduino的 TX
 char val = '1';                   //儲存接受到的資料變數

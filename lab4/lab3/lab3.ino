@@ -1,3 +1,4 @@
+// 利用keypad與LCD實現二項加減乘除。
 #include <Keypad.h>
 #include <LiquidCrystal_I2C.h>  //LCD_12
 #include <Wire.h>

@@ -1,3 +1,4 @@
+// Serial Monitor上輸入再透過藍芽傳資料，來控制LED亮暗。
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);
 #define LED 12

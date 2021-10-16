@@ -1,5 +1,6 @@
+/* 利用SPI進行2個Arduino板子之間通訊，2個Arduino板子都分別帶有1個LED和1個按鈕。
+按下一端的按鈕，使另一端的LED亮起，放開後熄滅。*/
 #include <SPI.h>
-
 #define LED 7
 #define buttonpin 2
 int button;

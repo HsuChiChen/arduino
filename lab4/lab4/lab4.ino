@@ -1,9 +1,10 @@
+// 利用keypad與LCD實現四則運算計算機。
 #include <Keypad.h>
 #include <LiquidCrystal_I2C.h>  //LCD_12
 #include <Wire.h>
-#include <ctype.h>
-#include <stdio.h>
-#include <stdlib.h>
+//#include <ctype.h>
+//#include <stdio.h>
+//#include <stdlib.h>
 #define MAX 100
 
 //for LCD

@@ -1,3 +1,4 @@
+// 利用I2C進行Arduino間通訊。
 #include <Wire.h>
 #define SLAVE_ADDRESS 0x12
 #define SERIAL_BAUD 57600
@@ -12,7 +13,7 @@ void setup() {
 }
 void loop() {}
 
-void receiveEvent() {
+void receiveEvent(int howMany) {
     Serial.println("Receive Data:");
     while (Wire.available()) {
         Serial.print((char)Wire.read());

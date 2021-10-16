@@ -1,5 +1,5 @@
+// 利用SPI進行2個Arduino板子之間通訊，傳送字串"Hello, world!"。
 #include <SPI.h>
-
 char buf[100];
 volatile byte pos;
 volatile bool flag;

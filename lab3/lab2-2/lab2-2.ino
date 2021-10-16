@@ -1,3 +1,4 @@
+// Serial Monitor上輸入再透過藍芽傳資料，控制五顆LED跑馬燈。
 #include <SoftwareSerial.h>
 SoftwareSerial BTSerial(10, 11);
 int LED[5] = {2, 3, 4, 5, 6};

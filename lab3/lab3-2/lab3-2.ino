@@ -1,7 +1,7 @@
+// 手機終端機輸入再透過藍芽傳資料，實現密碼鎖功能。
 #include <SoftwareSerial.h>
 
 #include "show_seg.h"
-
 SoftwareSerial BTSerial(10, 11);  // 宣告10腳位為Arduino的RX 、11為Arduino的 TX
 SHOW_SEG show_seg(2, 9, A0, A3);  //set pin2- pin13 as signal
 
