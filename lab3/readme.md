@@ -25,7 +25,7 @@
 |**SPCR** (SPI Control Register)|This register is basically the **master** register i.e. it contains the bits to **initialize SPI and control it**.|
 |**SPSR** (SPI Status Register)|This is the **status** register. This register is used to **read the status of the bus lines**.|
 |**SPDR** (SPI Data Register)|The SPI Data Register is the **read/write** register where the **actual data transfer** takes place.|
-- The SPI Control Register (SPCR)
+- The SPI Control Register (SPCR)<br>
 ![](img/3SPCR.png)
 
 |bit|abbr|name|
@@ -38,7 +38,7 @@
 |2  |CPHA      |Clock Phase|
 |1,0|SPR1, SPR0|SPI Clock Rate Select|
 
-- The SPI Status Register (SPSR)
+- The SPI Status Register (SPSR)<br>
 ![](img/4SPSR.png)
 
 |bit|abbr|name|
@@ -48,7 +48,7 @@
 |5:1|X|X (reserved bits)|
 |0  |SPI2x |SPI Double Speed Mode|
 
-- The SPI Data Register (SPDR)
+- The SPI Data Register (SPDR)<br>
 ![](img/5SPDR.png)
 The SPI Data register is an 8-bit read/write register. This is the register from where we **read the incoming data**, and **write the data** to which we want to **transmit**.
 <br><br>
@@ -383,7 +383,7 @@ SPI同步傳輸資料可藉由`MISO`、`MOSI`這兩條線傳送，其傳輸方�
 |無線電|`NRF24L01`|
 |WIFI|`ESP8266`|
 
-我目前想研究一下WIFI模組`ESP8266`並透過server傳資料到客戶端line bot，感覺很有趣。
+目前想研究一下WIFI模組`ESP8266`並透過server傳資料到客戶端line bot，感覺應該會很有趣。
 
 ---
 
