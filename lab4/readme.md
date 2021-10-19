@@ -217,23 +217,23 @@ Wire.endTransmission(); //結束傳輸
 在匯流排中用於初始化資料傳輸的裝置稱為**主匯流排(bus master**)。當一個系統會有超過一個主匯流排時，這些裝置間會互相分享匯流排系統，即當目前的主匯流排已經交出主導權時，其餘的匯流排可以獲得處理器的控制權，bus仲裁即為主匯流排間互相交換主控權的過程。<br>
 其中有兩種Bus仲裁方式，分別為 :
     1. **集中式仲裁(Centralised Arbitration)**
-    ![](img/1Centralised Arbitration.png)<br>
+    ![](img/1centralised_arbitration.png)<br>
     只有一個匯流排會負責執行仲裁，這個匯流排有可能是處理器或是連接至匯流排的控制器，集中式仲裁主要有三個方式：<br>
         - **菊鍊(Daisy Chaining)**：<br>
-![](img/2Daisy Chaining.png)<br>
+![](img/2daisy_chaining.png)<br>
 所有主匯流排裝置都使用同一條線路去向仲裁裝置(在此圖為控制器)請求控制權，假設匯流排是空閒的情況則仲裁會回傳**允許控制匯流排系統(bus grant)** 的資訊，此資訊會從線路回傳並經過沿路的主匯流排裝置，直到遇到第一個發出控制權請求的裝置。此時這個主匯流排裝置會阻擋bus grant訊號的傳遞，並且啟動**bus busy線路**後獲取控制權。
 <br><br>
         - **輪詢法(Polling Method)**:<br>
-![](img/3Polling Method.png)<br>
+![](img/3polling_method.png)<br>
 仲裁裝置(在此圖為控制器)在此方法中主要用於為主匯流排產生address，而**位址線路(address line)** 的數量取決於連接至此系統的主匯流排數量。舉例來說，假設有8個連接至系統的主匯流排，則至少需要3個位址線路。<br><br>
 仲裁裝置會根據發出請求的匯流排產生一組的主匯流排位址，而若發出請求的主匯流排認得此位址，則他就會啟動bus busy線路並開始使用匯流排系統。
 <br><br>
         - **獨立請求(Independent Request)**:<br>
-![](img/4Independent Request.png)<br>
+![](img/4independent_request.png)<br>
 在此方法中每組主匯流排都有各自獨立的請求線路和獲取線路，其中每組匯流排系統都有各自分配的優先權，仲裁裝置(在此圖為控制器)會有內建的優先權解碼器，並且會選取最高優先權的請求，然後允許此主匯流排控制匯流排系統。
 <br><br>
     2. **分散式仲裁(Distributed Arbitration)**
-    ![](img/4Distributed Arbitration.png)<br>
+    ![](img/5distributed_arbitration.png)<br>
     所有裝置會被列為可能選擇的下一個主匯流排，並被各自分配4-bit的識別數字，假設有一或多個裝置請求匯流排系統的控制權，則他們會斷言(assert)**開始仲裁(start-arbitration)** 的信號並且把識別數字輸出到仲裁線路上(由ARB0到ARB3)，由於4條仲裁線路都是Open-Collector，因此即便有一個以上的裝置也一樣可以輸出自己的4-bit識別碼。若有一個裝置要把1輸出到bus line上、另一個要輸出0到同個線路時，bus line的狀態會為0。
 <br><br>
 裝置會透過inverter buffer讀取每個仲裁線路的狀態。(因此若讀取到bus line狀態為0，則會轉為1)假設同時有兩個或以上的裝置放置識別數字在bus line上時，則需要透過bus line的狀態辨別出最高順位的識別數字。
@@ -272,7 +272,7 @@ double與float皆相同，根據[官方doc](https://www.arduino.cc/reference/en/
 <br><br>
 On the Arduino Due, doubles have 8-byte (64 bit) precision.
 
-![](img/6Double precision.png)
+![](img/6double_precision.png)
 雙浮點精度由3個部分包含 :
 |組成|功能|
 |:-:|:-:|
