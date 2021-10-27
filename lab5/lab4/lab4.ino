@@ -1,3 +1,4 @@
+// 利用按鈕控制步進馬達旋轉角度。
 #include <LiquidCrystal_I2C.h>  //LCD_12
 #include <Wire.h>
 
@@ -90,7 +91,7 @@ void loop() {
         } else {
             Serial.println("Out of condition");
         }
-        press_count = 0;
+        press_count = 0; //initialization
     }
 }
 

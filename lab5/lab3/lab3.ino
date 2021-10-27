@@ -1,3 +1,4 @@
+// 判斷按鈕狀態，反應於步進馬達與LCD顯示器。
 #include <LiquidCrystal_I2C.h>  //LCD_12
 #include <Wire.h>
 
@@ -13,7 +14,7 @@ int t = 5;
 
 unsigned long timer = 0;
 byte number = 0;
-
+void rotate(bool clockwise, int degree);
 void setup() {
     pinMode(8, OUTPUT);
     pinMode(9, OUTPUT);

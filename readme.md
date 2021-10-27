@@ -13,7 +13,8 @@ Time : 2021 fall (first half semester of junior)
 |W2|09/23|[跑馬燈、按鍵、多工七段顯示器、鍵盤](https://hackmd.io/@Alanzzzz/SJDW5IumK)|
 |W4|09/30|[密碼鎖、計步器](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/rJSzxDQ-K#Arduino%E8%AC%9B%E7%BE%A9%EF%BC%9A%E8%A8%88%E6%AD%A5%E5%99%A8)|
 |W5|10/07|[SPI、藍芽模組](https://hackmd.io/@9ScCWm6PQhCqJjg8JfJKzQ/SJ2Ig1nVt)|
-
+|W6|10/21|[超音波、步進馬達](https://hackmd.io/@us4sw9duT5aIGbNJpCM_-Q/r1cFVAulY)|
+|W7|10/28|[自走車](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/H1c5B8dHF)|
 
 <br>
 
@@ -24,6 +25,7 @@ Time : 2021 fall (first half semester of junior)
 - [lab3](#lab3)
 - [lab4](#lab4)
 - [lab5](#lab5)
+- [lab6](#lab6)
 
 <br>
 
@@ -42,6 +44,7 @@ Time : 2021 fall (first half semester of junior)
 |lab2 新增模組|`MPU6050`(6軸傳感器)|
 |lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), HC-05(藍芽模組)|
 |lab4 新增模組|16×2 I2C LCD(顯示器)|
+|lab5 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
 
 <br>
 
@@ -95,6 +98,26 @@ git clone https://github.com/HsuChiChen/arduino.git
 - 利用I2C進行Arduino間通訊 - 傳字串。
 - 利用keypad與LCD實現四則運算計算機。
 > lab2、lab3、lab4需引入`LiquidCrystal_I2C.h`的header file。
+
+<br>
+
+## lab5
+![](img/lab5.gif)
+- 使用超聲波模組測距離，搭配LCD顯示器與LED燈。
+- 利用按鈕控制步進馬達旋轉角度。
+
+|按鈕|馬達旋轉角度|
+|:-:|:-:|
+|按1下|`90`度|
+|快速按2下|`120`度|
+|快速按3下|`180`度|
+|長按3秒|`360`度|
+
+<br>
+
+## lab6
+
+
 <br>
 
 ## Contributions

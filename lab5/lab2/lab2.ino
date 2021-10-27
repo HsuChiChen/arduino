@@ -1,8 +1,10 @@
+// 使用步進馬達搭配LCD顯示器與按鈕。
 int trigPin = 13;  //Trig Pin
 int echoPin = 12;  //Echo Pin
 long duration, cm;
 
 int t = 3;  //換相所需的時間
+void rotate(int mode);
 void setup() {
     Serial.begin(9600);        // Serial Port begin
     pinMode(trigPin, OUTPUT);  // 定義輸入及輸出

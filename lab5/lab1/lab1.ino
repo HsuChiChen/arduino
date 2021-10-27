@@ -1,3 +1,4 @@
+// 使用超聲波模組搭配LCD顯示器與LED燈。
 #include <LiquidCrystal_I2C.h>  //LCD_12
 #include <Wire.h>
 

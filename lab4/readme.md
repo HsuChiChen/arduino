@@ -214,9 +214,10 @@ Wire.endTransmission(); //結束傳輸
 時序可分為兩種master clock和slave clock，而在時脈同步系統中，master經由網路伺服器、GPS接收器等裝置得到準確時序，再將此時序連接到各個slave端，以確保整個系統的時序是精準且同步的。master一天之中會多次更新時脈訊號給slave，避免slave時序延遲。
 
 - **匯流排仲裁(bus arbitration)**<br>
-在匯流排中用於初始化資料傳輸的裝置稱為**主匯流排(bus master**)。當一個系統會有超過一個主匯流排時，這些裝置間會互相分享匯流排系統，即當目前的主匯流排已經交出主導權時，其餘的匯流排可以獲得處理器的控制權，bus仲裁即為主匯流排間互相交換主控權的過程。<br>
-其中有兩種Bus仲裁方式，分別為 :
+  在匯流排中用於初始化資料傳輸的裝置稱為**主匯流排(bus master**)。當一個系統會有超過一個主匯流排時，這些裝置間會互相分享匯流排系統，即當目前的主匯流排已經交出主導權時，其餘的匯流排可以獲得處理器的控制權，bus仲裁即為主匯流排間互相交換主控權的過程。<br>
+  其中有兩種Bus仲裁方式，分別為 :
     1. **集中式仲裁(Centralised Arbitration)**<br>
+
       ![](img/1centralised_arbitration.png)<br>
       只有一個匯流排會負責執行仲裁，這個匯流排有可能是處理器或是連接至匯流排的控制器，集中式仲裁主要有三個方式：<br>
         - **菊鍊(Daisy Chaining)**：<br>
@@ -233,6 +234,7 @@ Wire.endTransmission(); //結束傳輸
     在此方法中每組主匯流排都有各自獨立的請求線路和獲取線路，其中每組匯流排系統都有各自分配的優先權，仲裁裝置(在此圖為控制器)會有內建的優先權解碼器，並且會選取最高優先權的請求，然後允許此主匯流排控制匯流排系統。
     <br><br>
     2. **分散式仲裁(Distributed Arbitration)**
+
       ![](img/5distributed_arbitration.png)<br>
       所有裝置會被列為可能選擇的下一個主匯流排，並被各自分配4-bit的識別數字，假設有一或多個裝置請求匯流排系統的控制權，則他們會斷言(assert)**開始仲裁(start-arbitration)** 的信號並且把識別數字輸出到仲裁線路上(由ARB0到ARB3)，由於4條仲裁線路都是Open-Collector，因此即便有一個以上的裝置也一樣可以輸出自己的4-bit識別碼。若有一個裝置要把1輸出到bus line上、另一個要輸出0到同個線路時，bus line的狀態會為0。
     <br><br>
@@ -294,8 +296,8 @@ LCD的部分，相較於七段顯示器，LCD較好操作。LCD模組配有掃�
 延續[lab2學UART](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/rJSzxDQ-K#UART-Protocol)(Serial Monitor)、[lab3學SPI](https://hackmd.io/@9ScCWm6PQhCqJjg8JfJKzQ/SJ2Ig1nVt#Introduction-of-SPI)(傳字串)，這次[lab4學I^2^C](https://hackmd.io/@mzTjnf74ST6xKOB4FrGblQ/SksjSGqWK#Introduction-of-I2C)(傳字串)三大傳輸協定是算是告一段落，原理介紹文章可參閱[【Maker 電子學】作者Bird](https://makerpro.cc/author/birdlg/)，而對應相關模組 :
 |介面|外接線|模組|
 |:-:|:-:|:-:|
-|UART|RX(接收)、TX(發送)|藍芽HC-05(lab3)|
-|I^2^C|SDA(資料)、SCL(時脈)|三軸陀螺儀與三軸加速計`MPU6050`(lab2)、顯示器LCD(lab4)|
+|UART|RX(接收)、TX(發送)|藍芽`HC-05`(lab3)|
+|I^2^C|SDA(資料)、SCL(時脈)|三軸陀螺儀與三軸加速計`MPU6050`(lab2)、顯示器`16*2 I2C LCD`(lab4)|
 |SPI|MOSI(主出從入)、MISO(主入從出)、SCLK(時脈)、SS(選擇1)、SS2(選擇2)...|無|
 
 3者對應使用到的函式庫 : 
