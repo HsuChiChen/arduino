@@ -40,11 +40,12 @@ Time : 2021 fall (first half semester of junior)
 |項目|規格|
 |:-:|:-:|
 |板子|Arduino R3 with ATmega328P, 16 MHz|
-|lab1 新增模組|Multiplexed(4-digit) seven-segment display(顯示器), 4x4 Keypad(輸入媒介)|
+|lab1 新增模組|`Multiplexed(4-digit) seven-segment display`(顯示器), `4x4 Keypad`(輸入媒介)|
 |lab2 新增模組|`MPU6050`(6軸傳感器)|
-|lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), HC-05(藍芽模組)|
-|lab4 新增模組|16×2 I2C LCD(顯示器)|
+|lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), `HC-05`(藍芽模組)|
+|lab4 新增模組|`16×2 I2C LCD`(顯示器)|
 |lab5 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
+|lab5 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
 
 <br>
 
@@ -116,7 +117,27 @@ git clone https://github.com/HsuChiChen/arduino.git
 <br>
 
 ## lab6
+![](img/lab6-1.gif)
+![](img/lab6-2.jpg)
+- 利用2個超音波模組、`L298N`控制2個馬達轉動，實作**跟隨自走車**。
 
+|跟隨物位置|自走車反應|
+:-:|:-:|
+|太靠近時|後退|
+|在右|右轉|
+|在左|左轉|
+|前方一定範圍|向前|
+|沒有物件|停止|
+
+- 利用藍牙模組`HC-05`，結合lab4跟隨自走車，實作**遙控車**。
+
+|序列視窗輸入|車子|
+:-:|:-:|
+|`w`, `f`|前進|
+|`a`, `l`|左轉|
+|`d`, `r`|右轉|
+|`s`, `b`|後退|
+|`q`|停止|
 
 <br>
 
