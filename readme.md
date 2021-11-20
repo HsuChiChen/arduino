@@ -148,6 +148,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 - `delay()`是使用Timer的CTC mode。
 - `analogRead()`使用Single Conversion Mode。
 - `analogWrite()`藉由動態改變Fast PWM下`OCR1B`的值，去影響PWM的duty cycle。
+> lab6需引入`Time.h`的header file。
 
 <br>
 
