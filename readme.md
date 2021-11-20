@@ -15,7 +15,7 @@ Time : 2021 fall (first half semester of junior)
 |W5|10/07|[SPI、藍芽模組](https://hackmd.io/@9ScCWm6PQhCqJjg8JfJKzQ/SJ2Ig1nVt)|
 |W6|10/21|[超音波、步進馬達](https://hackmd.io/@us4sw9duT5aIGbNJpCM_-Q/r1cFVAulY)|
 |W7|10/28|[自走車](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/H1c5B8dHF)|
-
+|W10|11/18|[Timer](https://hackmd.io/@Alanzzzz/BkIn1jsDt)|
 <br>
 
 ## Report
@@ -26,6 +26,7 @@ Time : 2021 fall (first half semester of junior)
 - [lab4](#lab4)
 - [lab5](#lab5)
 - [lab6](#lab6)
+- [lab7](#lab7)
 
 <br>
 
@@ -45,7 +46,8 @@ Time : 2021 fall (first half semester of junior)
 |lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), `HC-05`(藍芽模組)|
 |lab4 新增模組|`16×2 I2C LCD`(顯示器)|
 |lab5 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
-|lab5 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
+|lab6 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
+|lab7 新增模組|無|
 
 <br>
 
@@ -138,6 +140,14 @@ git clone https://github.com/HsuChiChen/arduino.git
 |`d`, `r`|右轉|
 |`s`, `b`|後退|
 |`q`|停止|
+
+<br>
+
+## lab7
+- 藉由直接操作ATmega328p的register實作`delay()`, `analogRead()`, `analogWrite()`功能。
+- `delay()`是使用Timer的CTC mode。
+- `analogRead()`使用Single Conversion Mode。
+- `analogWrite()`藉由動態改變Fast PWM下`OCR1B`的值，去影響PWM的duty cycle。
 
 <br>
 
