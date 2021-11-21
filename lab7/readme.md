@@ -16,36 +16,36 @@
 ```cpp
 DDRB = (1 << 5);  // set pin 13 OUTPUT
 ```
-![](img/1DDRB.png)
+![](img/1DDRB.png)<br>
 DDRB(The Port B Data Direction Register)從LSB數來第5位設為1，也就是OUTPUT。
-![](img/2schemetic.png)
+![](img/2schemetic.png)<br>
 ATmega328P的PB5設為OUTPUT，由上圖電路可知如果`PB5=HIGH`時，接在上面的diode順壓，因此會亮。
 
 ```cpp
 TCCR1A = 0;             // TCCR1A Reset
 ```
-![](img/3TCCR1A.png)
+![](img/3TCCR1A.png)<br>
 register全都設為0，代表Timer Mode為Normal。
 
 ```cpp
 TCCR1B = 0;             // TCCR1B Reset
 TCCR1B |= (1 << CS12);  // 256 prescaler
 ```
-![](img/4TCCR1B.png)
+![](img/4TCCR1B.png)<br>
 CS12=1、CS11=0、CS10=0，代表除頻256。
 $$\frac{16,000,000}{256} = 62,500$$
 
 ```cpp
 TCNT1 = 3036;  // preload timer (65536-62500)
 ```
-![](img/5TCNT1.png)
+![](img/5TCNT1.png)<br>
 計數器從3036開始計數，一直數到65536，共62500個，因此每次數62500個時，由於CLK頻率是62,500Hz，因此即為1秒。
 
 ```cpp
 TIMSK1 |= (1 << TOIE1);  // enable timer overflow interrupt
 interrupts();  // enable interrupts
 ```
-![](img/6TIMSK1.png)
+![](img/6TIMSK1.png)<br>
 當TOIE這個bit為1，代表啟動overflow interrupt。
 
 ```cpp
@@ -150,7 +150,7 @@ ADMUX |= (1 << REFS0);
 ```cpp
 ADCSRA |= (1 << ADEN);
 ```
-![](img/7ADCSRA.png)
+![](img/7ADCSRA.png)<br>
 根據datasheet P218，`ADEN=1`代表啟動ADC。
 
 ```cpp
@@ -176,7 +176,6 @@ uint16_t ReadADC(uint8_t channel) {
 ```
 根據datasheet P209，首先要了解First Conversion (Single Conversion Mode)。
 ![](img/8ADC.png)
-
 
 根據datasheet P218，Analog Channel Selection Bits的選擇表為
 |MUX3..0|Single Ended Input|
