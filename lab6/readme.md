@@ -126,7 +126,6 @@ analogWrite(RIGHT_PWM, motor_speed + 30);
 |快閃2下後停2秒|已配對成功，運作中|
 
 ### 藍芽的AT mode(key接5V)
-
 |command              |序列埠回應            |功能|
 |:--------------------|:--------------------|:-|
 |AT	                  |OK                   |確認藍芽與序列埠溝通正常|
@@ -143,11 +142,17 @@ analogWrite(RIGHT_PWM, motor_speed + 30);
 |AT+ORGL              |OK                   |回復預設值|
 
 - 更多指令請參照[HC-05 - AT Command Set](https://s3-sa-east-1.amazonaws.com/robocore-lojavirtual/709/HC-05_ATCommandSet.pdf)、[HC-05 嵌入式蓝牙串口通讯模块](https://www.taiwaniot.com.tw/wp-content/uploads/2016/01/ADIO-HC-05-1.pdf)。
+- 進入AT mode教學 : [使用Arduino設定AT命令](https://swf.com.tw/?p=712)
 
 ### 藍芽配對
 在[lab3 lab2-1與lab2-2實現方法](https://hackmd.io/@arduino/report-3#%E5%AF%A6%E7%8F%BE%E6%96%B9%E6%B3%952)，我們當初實作是錯誤的，直到這次lab才搞懂。
 
 參照[這部影片](https://www.youtube.com/watch?v=hyME1osgr7s)進行改進，藍芽配對如以下步驟 :
+- 進入AT mode
+    1. key接`5V`(高電位)
+    2. Serial Monitor鮑率選`9600`
+    3. 換行規則選`NL&CR`
+    4. 輸入AT指令第一次會出現`ERROR:(0)`，第二次輸入AT出現 `OK`
 - slave的HC-05
     1. 所有AT參數恢復為原廠設定
     ```cpp
@@ -174,7 +179,7 @@ analogWrite(RIGHT_PWM, motor_speed + 30);
     ```cpp
     AT+UART=38400
     ```
-    3. 設定角色為從端
+    3. 設定角色為主端
     ```cpp
     AT+ROLE=1
     ```
@@ -189,6 +194,11 @@ analogWrite(RIGHT_PWM, motor_speed + 30);
 
 ### 實現方法
 關鍵在於[2個藍芽之間的配對](#藍芽配對)，這部分其實是[lab3 lab2的實驗內容](https://hackmd.io/@arduino/report-3#lab2-1)，但因為當初搞錯題目也沒有實作出來。參照網路教學[How To Configure and Pair Two HC-05 Bluetooth Module as Master and Slave | AT Commands](https://www.youtube.com/watch?v=hyME1osgr7s)，在進入AT mode一開始，還需額外輸入`AT+ORGL`指令，意思是將所有AT參數恢復為原廠設定，以免這次未設定的參數被前一次所設定的參數所影響。
+- 需要注意軟接口有參建構函數，以下範例第1個參數是10是藍芽`TX`，對應是Arduino的`RX`；第2個參數11是藍芽`RX`，對應是Arduino的`TX`。
+```cpp
+// 定義連接藍牙模組的序列埠
+SoftwareSerial BT(10, 11);
+```
 
 ## 課後習題
 ### Question 1

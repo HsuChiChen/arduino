@@ -2,7 +2,7 @@
 #include <SoftwareSerial.h>
 
 // 定義連接藍牙模組的序列埠
-SoftwareSerial BT(10, 11);  // 接收腳, 傳送腳
+SoftwareSerial BT(10, 11);  // 10是藍芽TX(Arduino的RX)、11是藍芽RX(Arduino的TX)
 char val;                 // 儲存接收資料的變數
 
 void setup() {
