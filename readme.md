@@ -63,7 +63,8 @@ Time : 2021 fall (first half semester of junior)
 |lab5 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
 |lab6 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
 |lab7 新增模組|無|
-|lab8 新增模組|`STM32 NUCLEO-F207ZG`|
+|板子|STM32 NUCLEO-F207ZG with ARM 32-bit Cortex-M3|
+|lab8 新增模組|無|
 
 <br>
 
