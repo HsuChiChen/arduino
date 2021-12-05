@@ -7,6 +7,8 @@ Time : 2021 fall (first half semester of junior)
 |:-:|:-:|
 |[單晶片系統](http://class-qry.acad.ncku.edu.tw/syllabus/online_display.php?syear=0110&sem=1&co_no=E230900&class_code=)|[戴政祺](https://www.ee.ncku.edu.tw/teacher/index2.php?teacher_id=125)|
 
+- Arduino
+
 |周次|日期|課程|
 |:-:|:-:|:-:|
 |W1|09/16|[110學年課程介紹](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/Hy_OTeRWK)|
@@ -16,6 +18,13 @@ Time : 2021 fall (first half semester of junior)
 |W6|10/21|[超音波、步進馬達](https://hackmd.io/@us4sw9duT5aIGbNJpCM_-Q/r1cFVAulY)|
 |W7|10/28|[自走車](https://hackmd.io/@nsyRI3v6SuG6fKQFyi9Ugg/H1c5B8dHF)|
 |W10|11/18|[Timer](https://hackmd.io/@Alanzzzz/BkIn1jsDt)|
+
+- STM32
+
+|周次|日期|課程|
+|:-:|:-:|:-:|
+|W12|12/02|[I/O、interupt](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/SkBGaA2OF)|
+
 <br>
 
 ## Report
@@ -27,6 +36,7 @@ Time : 2021 fall (first half semester of junior)
 - [lab5](#lab5)
 - [lab6](#lab6)
 - [lab7](#lab7)
+- [lab8](#lab8)
 
 <br>
 
@@ -34,9 +44,14 @@ Time : 2021 fall (first half semester of junior)
 1. OS
 - `Windows 10 21H1`
 2. IDE
-- [`Arduino IDE 1.8.16`](https://www.arduino.cc/en/software)
+- [`Arduino IDE 1.8.16`](https://www.arduino.cc/en/software) (lab1-lab7)
+- [Mbed Online comiler](https://os.mbed.com/) (lab8-lab11)
+
 3. Text Editor
 - `VScode 1.60.2` with plug-in  [`Arduino`](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino)
+
+4. Serial Monitor
+- `MobaXterm Home Edition 21.5` (lab8-lab11)
 
 |項目|規格|
 |:-:|:-:|
@@ -48,6 +63,7 @@ Time : 2021 fall (first half semester of junior)
 |lab5 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
 |lab6 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
 |lab7 新增模組|無|
+|lab8 新增模組|`STM32 NUCLEO-F207ZG`|
 
 <br>
 
@@ -56,7 +72,10 @@ Time : 2021 fall (first half semester of junior)
 ```
 git clone https://github.com/HsuChiChen/arduino.git
 ```
-2. open vscode and press shortcut `Ctrl`+`Alt`+`U` <br> to verify Arduino sketch and upload to board.
+2. open vscode and press shortcut `Ctrl`+`Alt`+`U` <br> to verify Arduino sketch and upload to board. (lab1-lab7)
+3. compile with mbed online compiler (lab8-lab11)
+4. dump the `*bin` file into the disk of `STM32 NUCLEO-F207ZG` (lab8-lab11)
+5. open `MobaXterm` to monitor data from serial communication (lab8-lab11)
 
 <br>
 
@@ -149,6 +168,15 @@ git clone https://github.com/HsuChiChen/arduino.git
 - `analogRead()`使用Single Conversion Mode。
 - `analogWrite()`藉由動態改變Fast PWM下`OCR1B`的值，去影響PWM的duty cycle。
 > lab6需引入`Time.h`的header file。
+
+<br>
+
+## lab8
+![](img/lab8.gif)
+- 在serial monitor上輸入指令指定LED跑馬燈的順序。
+- 使用Timeout的ISR中斷程序，一開始LED1閃爍，5秒後轉為閃爍LED2。
+- 呼吸燈。
+- 實現碼錶。使用七段顯示器顯示秒數，秒數精準到小數2位，秒數為個位數時，**不顯示十位數數字**。
 
 <br>
 
