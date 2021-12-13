@@ -24,6 +24,7 @@ Time : 2021 fall (first half semester of junior)
 |周次|日期|課程|
 |:-:|:-:|:-:|
 |W12|12/02|[I/O、interupt](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/SkBGaA2OF)|
+|W13|12/09|[RTOS(上)](https://hackmd.io/@us4sw9duT5aIGbNJpCM_-Q/H16Iy48IY)|
 
 <br>
 
@@ -37,6 +38,7 @@ Time : 2021 fall (first half semester of junior)
 - [lab6](#lab6)
 - [lab7](#lab7)
 - [lab8](#lab8)
+- [lab9](#lab9)
 
 <br>
 
@@ -65,6 +67,7 @@ Time : 2021 fall (first half semester of junior)
 |lab7 新增模組|無|
 |板子|STM32 NUCLEO-F207ZG with ARM 32-bit Cortex-M3|
 |lab8 新增模組|無|
+|lab9 新增模組|無|
 
 <br>
 
@@ -179,7 +182,12 @@ git clone https://github.com/HsuChiChen/arduino.git
 - 呼吸燈。
 - 實現碼錶。使用七段顯示器顯示秒數，秒數精準到小數2位，秒數為個位數時，**不顯示十位數數字**。
 
+
 <br>
+
+## lab9
+- 使用`rtos.h`，創建新的`thread`與用`signal`(用來告知process有一個event發生)去觸發指定的thread運作。
+> 需引入`rtos.h`的header file。
 
 ## Contributions
 |職稱|學號|姓名|email|
