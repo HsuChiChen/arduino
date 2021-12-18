@@ -31,15 +31,16 @@ Time : 2021 fall (first half semester of junior)
 
 ## Report
 > more info in the separate files
-- [lab1](#lab1)
-- [lab2](#lab2)
-- [lab3](#lab3)
-- [lab4](#lab4)
-- [lab5](#lab5)
-- [lab6](#lab6)
-- [lab7](#lab7)
-- [lab8](#lab8)
-- [lab9](#lab9)
+- [lab01](#lab01)
+- [lab02](#lab02)
+- [lab03](#lab03)
+- [lab04](#lab04)
+- [lab05](#lab05)
+- [lab06](#lab06)
+- [lab07](#lab07)
+- [lab08](#lab08)
+- [lab09](#lab09)
+- [lab10](#lab10)
 
 <br>
 
@@ -59,16 +60,16 @@ Time : 2021 fall (first half semester of junior)
 |項目|規格|
 |:-:|:-:|
 |板子|Arduino R3 with ATmega328P, 16 MHz|
-|lab1 新增模組|`Multiplexed(4-digit) seven-segment display`(顯示器), `4x4 Keypad`(輸入媒介)|
-|lab2 新增模組|`MPU6050`(6軸傳感器)|
-|lab3 新增模組|另一個Arduino Uno板子(SPI傳輸), `HC-05`(藍芽模組)|
-|lab4 新增模組|`16×2 I2C LCD`(顯示器)|
-|lab5 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
-|lab6 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
-|lab7 新增模組|無|
+|lab01 新增模組|`Multiplexed(4-digit) seven-segment display`(顯示器), `4x4 Keypad`(輸入媒介)|
+|lab02 新增模組|`MPU6050`(6軸傳感器)|
+|lab03 新增模組|另一個Arduino Uno板子(SPI傳輸), `HC-05`(藍芽模組)|
+|lab04 新增模組|`16×2 I2C LCD`(顯示器)|
+|lab05 新增模組|`HC-SR04`(超音波)、`28BYJ-48`(步進馬達)、`ULN2003A`(控制哪個輸出接腳要接地)|
+|lab06 新增模組|示波器(測PWM訊號)、`L298N`(控制馬達)、DC馬達|
+|lab07 新增模組|無|
 |板子|STM32 NUCLEO-F207ZG with ARM 32-bit Cortex-M3|
-|lab8 新增模組|無|
-|lab9 新增模組|無|
+|lab08 新增模組|無|
+|lab09 新增模組|無|
 |lab10 新增模組|無|
 
 <br>
@@ -85,7 +86,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab1
+## lab01
 ![](img/lab1.gif)
 - GPIO呈現控制LED燈，呈現**跑馬燈**、向左或向右等狀態。
 - 解決按鈕的de-bouncing問題。
@@ -104,7 +105,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab2
+## lab02
 ![](img/lab2.gif)
 - 可修改密碼、添加驗證碼等功能的**密碼鎖**。
 - **終極密碼**小遊戲。
@@ -113,7 +114,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab3
+## lab03
 ![](img/lab3.gif)
 - 利用SPI進行2個Arduino板子之間通訊 - 傳字串、操控彼此LED。
 - Serial Monitor上輸入再透過藍芽傳資料，控制五顆LED跑馬燈。
@@ -121,7 +122,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab4
+## lab04
 ![](img/lab4.gif)
 - 利用I2C進行Arduino間通訊 - 傳字串。
 - 利用keypad與LCD實現四則運算計算機。
@@ -129,7 +130,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab5
+## lab05
 ![](img/lab5.gif)
 - 使用超聲波模組測距離，搭配LCD顯示器與LED燈。
 - 利用按鈕控制步進馬達旋轉角度。
@@ -143,7 +144,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab6
+## lab06
 ![](img/lab6-1.gif)
 ![](img/lab6-2.jpg)
 - 利用2個超音波模組、`L298N`控制2個馬達轉動，實作**跟隨自走車**。
@@ -168,7 +169,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab7
+## lab07
 - 藉由直接操作ATmega328p的register實作`delay()`, `analogRead()`, `analogWrite()`功能。
 - `delay()`是使用Timer的CTC mode。
 - `analogRead()`使用Single Conversion Mode。
@@ -177,7 +178,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab8
+## lab08
 ![](img/lab8.gif)
 - 在serial monitor上輸入指令指定LED跑馬燈的順序。
 - 使用Timeout的ISR中斷程序，一開始LED1閃爍，5秒後轉為閃爍LED2。
@@ -186,7 +187,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 
 <br>
 
-## lab9
+## lab09
 - 創建新的`thread`與用`signal`(用來告知process有一個event發生)去觸發指定的thread運作。
 > 需引入`rtos.h`的header file。
 
