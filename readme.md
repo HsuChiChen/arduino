@@ -26,7 +26,7 @@ Time : 2021 fall (first half semester of junior)
 |W12|12/02|[I/O、interupt](https://hackmd.io/@G8HrHAUqQyCt9mHFYW05UA/SkBGaA2OF)|
 |W13|12/09|[RTOS(上)](https://hackmd.io/@us4sw9duT5aIGbNJpCM_-Q/H16Iy48IY)|
 |W14|12/16|[RTOS(下)](https://hackmd.io/@mzTjnf74ST6xKOB4FrGblQ/BJdEY4DqF)
-
+|W16|12/30|[USBHost](https://hackmd.io/@9ScCWm6PQhCqJjg8JfJKzQ/SkYDpZqoY)|
 <br>
 
 ## Report
@@ -71,6 +71,7 @@ Time : 2021 fall (first half semester of junior)
 |lab08 新增模組|無|
 |lab09 新增模組|無|
 |lab10 新增模組|無|
+|lab11 新增模組|無|
 
 <br>
 
@@ -191,9 +192,17 @@ git clone https://github.com/HsuChiChen/arduino.git
 - 創建新的`thread`與用`signal`(用來告知process有一個event發生)去觸發指定的thread運作。
 > 需引入`rtos.h`的header file。
 
+<br>
+
 ## lab10
 - 使用`mutex`鎖住critical section，確保同一時間內資料只會有單一存取；使用`semaphore`紀錄這個critical section可以同時被幾個線程共同執行。
 > 需引入`rtos.h`的header file。
+
+<br>
+
+## lab11
+- 使用`USBHost`，滑鼠與鍵盤當作USB device，而開發板當作是USB host。
+> 需引入`USBHostKeyboard.h`, `USBHostMouse.h`的header file。
 <br>
 
 ## Contributions
