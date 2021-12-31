@@ -27,6 +27,7 @@ Time : 2021 fall (first half semester of junior)
 |W13|12/09|[RTOS(上)](https://hackmd.io/@us4sw9duT5aIGbNJpCM_-Q/H16Iy48IY)|
 |W14|12/16|[RTOS(下)](https://hackmd.io/@mzTjnf74ST6xKOB4FrGblQ/BJdEY4DqF)
 |W16|12/30|[USBHost](https://hackmd.io/@9ScCWm6PQhCqJjg8JfJKzQ/SkYDpZqoY)|
+
 <br>
 
 ## Report
@@ -41,6 +42,7 @@ Time : 2021 fall (first half semester of junior)
 - [lab08](#lab08)
 - [lab09](#lab09)
 - [lab10](#lab10)
+- [lab11](#lab11)
 
 <br>
 
@@ -203,6 +205,7 @@ git clone https://github.com/HsuChiChen/arduino.git
 ## lab11
 - 使用`USBHost`，滑鼠與鍵盤當作USB device，而開發板當作是USB host。
 > 需引入`USBHostKeyboard.h`, `USBHostMouse.h`的header file。
+
 <br>
 
 ## Contributions
